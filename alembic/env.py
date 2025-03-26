@@ -6,6 +6,7 @@ from sqlalchemy import pool
 from alembic import context
 
 from sandbox.auth import models as auth_models
+from sandbox.sb import models as sb_models
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

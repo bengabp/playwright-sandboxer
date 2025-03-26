@@ -23,7 +23,10 @@ dependencies = [
     "psycopg2-binary (>=2.9.10,<3.0.0)",
     "loguru (>=0.7.3,<0.8.0)",
     "pydantic[email] (>=2.10.6,<3.0.0)",
-    "python-multipart (>=0.0.20,<0.0.21)"
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "docker (>=7.1.0,<8.0.0)",
+    "pytz (>=2025.2,<2026.0)",
+    "python-dateutil (>=2.9.0.post0,<3.0.0)"
 ]
 
 [tool.poetry]
