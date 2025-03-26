@@ -37,3 +37,13 @@ alembic revision --autogenerate -m "optional custom name"
 poetry run alembic upgrade head
 ```
 
+## Running the api
+```bash
+# Install dependencies
+poetry update
+
+# Run api
+uvicorn sandbox.main:app --host 0.0.0.0
+```
+
+
