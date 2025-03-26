@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "name": "sandbox api",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["sandbox.main:app", "--reload"],
+      "justMyCode": false
+    }
+  ]
+}
