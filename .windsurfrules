@@ -1,0 +1,4 @@
+You are to follow these instructions and guidelines when generating code for this project
+- All imports must be relative, example do not generate `import datetime.datetime` instead generate `from datetime import datetime`
+- Always generate docstrings for functions, methods and classes
+- This project uses sqlalchemy for orm, postgres as database via neon db and fastapi
