@@ -1,35 +1,33 @@
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
-from sqlalchemy.orm import declarative_base
-from app.core.config import settings
+# app/core/db.py
+from sqlalchemy import create_engine # Changed import
+from sqlalchemy.orm import sessionmaker, declarative_base, Session # Changed imports
+from sandbox.core.config import settings
 import logging
 
-# Configure logging to see SQL statements if needed (optional)
-# logging.basicConfig()
-# logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+# --- Remove async logging config if you added it ---
 
-# Create the async engine
-# pool_recycle helps prevent connection issues on long-idle connections
-# echo=True will log SQL statements - useful for debugging, disable in production
-engine = create_async_engine(
+# Create the SYNCHRONOUS engine
+engine = create_engine(
     settings.DATABASE_URL,
     echo=False, # Set to True for debugging SQL
-    pool_recycle=3600 # Recycle connections every hour
+    pool_recycle=3600
 )
 
-# Create the async session factory
-AsyncSessionLocal = async_sessionmaker(
+# Create the SYNCHRONOUS session factory
+# autocommit=False, autoflush=False are standard defaults for sessionmaker
+SessionLocal = sessionmaker(
     bind=engine,
-    class_=AsyncSession,
-    expire_on_commit=False # Important for FastAPI background tasks
+    autocommit=False,
+    autoflush=False,
 )
 
-# Base class for SQLAlchemy models
+# Base class for SQLAlchemy models (no change needed)
 Base = declarative_base()
 
-# Dependency to get DB session
-async def get_db() -> AsyncSession:
-    async with AsyncSessionLocal() as session:
-        try:
-            yield session
-        finally:
-            await session.close() # Ensure session is closed
+# Dependency to get DB session (SYNCHRONOUS version)
+def get_db() -> Session: # Changed return type hint
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close() # Ensure session is closed

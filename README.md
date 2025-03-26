@@ -25,3 +25,15 @@ node /app/server.js
 python3 /app/server.py
 ```
 
+## Running alembic migration
+```bash
+# Init alembic
+alembic init alembic
+
+# generate migration scripts
+alembic revision --autogenerate -m "optional custom name"
+
+# Apply migration
+poetry run alembic upgrade head
+```
+

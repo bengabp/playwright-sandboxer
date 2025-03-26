@@ -4,8 +4,8 @@ from typing import Any
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
-from app.core.config import settings
-from app.auth.schemas import TokenData
+from sandbox.core.config import settings
+from sandbox.auth.schemas import TokenData
 
 # Password Hashing Context
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
