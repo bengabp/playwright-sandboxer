@@ -29,6 +29,10 @@ class Sandbox(Base):
         String,
         unique=False, index=True, nullable=True
     )
+    container_id = Column(
+        String,
+        unique=True, index=True, nullable=True
+    )
     status = Column(
         SQLEnum(
             SandboxStatus, # Your Python Enum
