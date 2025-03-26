@@ -1,4 +1,4 @@
-# Playwright Sandboxer
+# Sandbox
 
 Initialize & Manage multiple playwright sandboxes.
 
