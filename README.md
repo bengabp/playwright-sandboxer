@@ -46,4 +46,25 @@ poetry update
 uvicorn sandbox.main:app --host 0.0.0.0
 ```
 
+# Building the sandbox image
+The sandbox image contains code that automates playwright and wraps its dependencies together. A base image has been used which has poetry, playwright and important packages installed. This also reduces the time it takes for the sb image to build and helps you focus on sandbox code dependencies.
+
+## Libraries in base image
+- x11vnc
+- xvfb
+- poetry
+- playwright (with system dependencies and browsers installed)
+- python 3.11
+- novnc
+- websockify
+
+You can extend the base image to install additional system dependencies and packages
+
+```bash
+# Building base image
+docker buildx build -t docker.io/<YOUR-DOCKER-HUB-USERNAME>/sandbox:base
+
+# Building sb(sandbox) image
+docker buildx build -t sb .
+```
 
