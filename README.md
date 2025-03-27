@@ -2,7 +2,7 @@
 Initialize & Manage multiple playwright sandboxes.
 
 # Building the sandbox image
-The sandbox image contains code that automates playwright and wraps its dependencies together. A (base image)[https://hub.docker.com/r/bengabp/sandbox] has been used which has poetry, playwright and important packages installed. This also reduces the time it takes for the sb image to build and helps you focus on sandbox code dependencies.
+The sandbox image contains code that automates playwright and wraps its dependencies together. A [base image](https://hub.docker.com/r/bengabp/sandbox) has been used which has poetry, playwright and important packages installed. This also reduces the time it takes for the sb image to build and helps you focus on sandbox code dependencies.
 
 ## Libraries in base image
 - x11vnc
