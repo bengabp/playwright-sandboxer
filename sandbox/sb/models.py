@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, DateTime
+from sqlalchemy import Column, String, DateTime, ForeignKey
 from sqlalchemy import Enum as SQLEnum
 from sandbox.core.db import Base
 from sandbox.core.config import settings
@@ -28,6 +28,49 @@ class Sandbox(Base):
     twitter_account_id = Column(
         String,
         unique=False, index=True, nullable=True
+    )
+    container_id = Column(
+        String,
+        unique=True, index=True, nullable=True
+    )
+    status = Column(
+        SQLEnum(
+            SandboxStatus, # Your Python Enum
+            name="sandbox_status_enum", # Optional but good practice: name for potential native type
+            values_callable=lambda obj: [e.value for e in obj], # Helps SQLAlchemy validate input values
+            native_enum=False # *** Store as VARCHAR ***
+        ),
+        nullable=False,
+        default=SandboxStatus.default(), # Use the default value from the enum
+        server_default=SandboxStatus.default().value # Set DB-level default to the string value
+    )
+
+
+class Event(Base):
+    __tablename__ = "events"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid.uuid4,
+        unique=True,
+        nullable=False,
+        index=True
+    )
+    created_at = Column(
+        DateTime,
+        nullable=False,
+        default=settings.datetime_now
+    )
+    sandbox_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("sandboxes.id"),
+        nullable=False
+    )
+    created_by = Column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=False
     )
     container_id = Column(
         String,

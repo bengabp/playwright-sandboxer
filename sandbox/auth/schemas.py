@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, ConfigDict
+from pydantic import BaseModel, EmailStr, ConfigDict, UUID4
 
 class Token(BaseModel):
     access_token: str
@@ -18,6 +18,6 @@ class TokenRequest(UserBase):
     password: str
 
 class User(UserBase):
-    id: int
+    id: UUID4
     is_active: bool
     model_config = ConfigDict(from_attributes=True)
