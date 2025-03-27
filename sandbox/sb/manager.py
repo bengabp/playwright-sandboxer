@@ -4,7 +4,7 @@ from sandbox.core.config import settings
 from sandbox.sb.models import Event
 
 
-def run_container_detached(image_name: str, env_vars: dict[str, str]) -> str | None:
+def run_container(image_name: str, env_vars: dict[str, str]) -> str | None:
     """
     Starts a Docker container in the background (detached) with specified
     environment variables and returns its ID.

@@ -7,6 +7,13 @@
       "module": "uvicorn",
       "args": ["sandbox.main:app", "--reload"],
       "justMyCode": false
+    },
+    {
+      "name": "Automate script",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "sandbox.sb.automate",
+      "justMyCode": false
     }
   ]
 }
