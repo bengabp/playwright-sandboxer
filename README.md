@@ -23,7 +23,7 @@ docker buildx build -t docker.io/<YOUR-DOCKER-HUB-USERNAME>/sandbox:base
 docker buildx build -t sb .
 ```
 
-# Connecting to novnc from reactjs frontend
+## Reactjs Client Connection
 ```typescript
 // Sandbox.tsx
 import React from 'react';
