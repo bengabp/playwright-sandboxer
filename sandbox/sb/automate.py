@@ -2,6 +2,8 @@ from playwright.async_api import async_playwright, BrowserContext
 from playwright._impl._errors import TargetClosedError
 import asyncio
 from loguru import logger
+import os
+import time
 
 
 class SandboxAgent:
@@ -18,6 +20,8 @@ class SandboxAgent:
     async def run(self):
         async with async_playwright() as p:
             logger.info("Launching agent...")
+            print("launching agent ...")
+
             browser = await p.chromium.launch(headless=False)
             context = await browser.new_context()
             page = await context.new_page()
@@ -32,5 +36,10 @@ class SandboxAgent:
 
 
 if __name__ == "__main__":
+    os.environ['DISPLAY']=":99"
+
+    logger.info("Agent starting... waiting for Xdisplay server ..")
+    # time.sleep(60)
+
     agent = SandboxAgent()
     asyncio.run(agent.run())
