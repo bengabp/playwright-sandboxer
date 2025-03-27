@@ -1,0 +1,30 @@
+FROM python:3.11
+
+# Install required system dependencies
+RUN apt-get update && apt-get install -y \
+    xvfb x11vnc fluxbox websockify curl unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install noVNC for streaming the browser
+RUN curl -L -o /tmp/noVNC.zip https://github.com/novnc/noVNC/archive/refs/heads/master.zip \
+    && unzip /tmp/noVNC.zip -d /usr/share/ \
+    && mv /usr/share/noVNC-master /usr/share/novnc \
+    && rm /tmp/noVNC.zip
+
+WORKDIR /workspace
+COPY pyproject.toml ./
+
+# Install dependencies (this layer will be cached if poetry files don't change)
+RUN pip install --no-cache-dir poetry && \
+    poetry config virtualenvs.create false && \
+    poetry config installer.parallel true && \
+    poetry lock && \
+    poetry update
+
+RUN playwright install-deps && playwright install
+RUN echo playwright --version
+
+# Set the default shell to bash
+SHELL ["/bin/bash", "-c"] 
+
+CMD [ "bash", "-c", "poetry" ]
