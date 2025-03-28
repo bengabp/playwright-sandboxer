@@ -1,5 +1,5 @@
 # Sandbox
-Initialize & Manage multiple playwright sandboxes.
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=100&size=25&duration=2000&pause=1000&background=000000&center=true&vCenter=true&width=500&height=81&lines=Run+playwright+in+a+sandbox)](https://git.io/typing-svg)
 
 # Building the sandbox image
 The sandbox image contains code that automates playwright and wraps its dependencies together. A [base image](https://hub.docker.com/r/bengabp/sandbox) has been used which has poetry, playwright and important packages installed. This also reduces the time it takes for the sb image to build and helps you focus on sandbox code dependencies.
@@ -72,8 +72,7 @@ export default Sandbox;
 
 # Api
 The purpose of the api is to manage sandbox instances and dynamic code injection for new sandboxes.
-
-## Tech stack
+## Stack
 - Fastapi & Sqlalchemy - Backend & ORM
 - Alembic - Database migrations
 - Postgres via NeonDb - Database
