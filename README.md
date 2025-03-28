@@ -1,11 +1,7 @@
 # Sandbox
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=100&size=25&duration=2000&pause=1000&background=000000&center=true&vCenter=true&width=500&height=81&lines=Run+playwright+in+a+sandbox)](https://git.io/typing-svg)
 
-<video controls>
-  <source src="assets/sb-demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
+https://github.com/user-attachments/assets/729a3720-66a8-4773-9208-0aa8b6986b22
 
 # :hammer_and_wrench:  Building the sandbox image
 The sandbox image contains code that automates playwright and wraps its dependencies together. A [base image](https://hub.docker.com/r/bengabp/sandbox) has been used which has poetry, playwright and important packages installed. This also reduces the time it takes for the sb image to build and helps you focus on sandbox code dependencies.
@@ -13,6 +9,9 @@ The sandbox image contains code that automates playwright and wraps its dependen
 ## Libraries in base image
 - x11vnc
 - xvfb
+
+
+
 - poetry
 - playwright (with system dependencies and browsers installed)
 - python 3.11
